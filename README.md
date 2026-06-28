@@ -1,39 +1,56 @@
 # GitHub Profile Analyzer API
 
-## 📌 Overview
-
-GitHub Profile Analyzer API is a backend application built using **Node.js**, **Express.js**, and **MySQL**. It fetches a user's public GitHub profile using the GitHub REST API, analyzes the profile, stores useful insights in a MySQL database, and provides APIs to retrieve the stored data.
+A RESTful backend API built with **Node.js**, **Express.js**, and **MySQL** that analyzes GitHub user profiles using the GitHub REST API, calculates developer insights, stores them in a MySQL database, and exposes endpoints to retrieve the analyzed data.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
 
-* Fetch GitHub public profile by username
-* Store analyzed profile in MySQL
-* Update existing profiles automatically
-* Calculate custom insights:
+**Live API**
+
+https://github-profile-analyzer-assignment-sooty.vercel.app
+
+**GitHub Repository**
+
+https://github.com/abhigyan-oss/github-profile-analyzer-assignment
+
+---
+
+# 📌 Features
+
+* Analyze any public GitHub profile
+* Fetch data from GitHub REST API
+* Store profile information in MySQL
+* Automatically update existing profiles
+* Calculate developer insights:
 
   * Popularity Score
   * Profile Completeness
   * GitHub Account Age
   * Follower-to-Repository Ratio
   * Developer Level
-* Get all analyzed profiles
-* Get a single analyzed profile
+* Retrieve all analyzed profiles
+* Retrieve a single analyzed profile
+* RESTful API design
+* Deployed on Vercel
+* MySQL database hosted on Railway
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
 * Node.js
 * Express.js
 * MySQL
 * Axios
 * dotenv
+* CORS
+* Railway (Database)
+* Vercel (Deployment)
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```
 github-profile-analyzer-assignment/
@@ -43,42 +60,46 @@ github-profile-analyzer-assignment/
 ├── models/
 ├── routes/
 ├── services/
-├── middleware/
-├── database/
 ├── app.js
 ├── package.json
 ├── github_analyzer.sql
+├── .env.example
 └── README.md
 ```
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
-Clone the repository:
+## Clone Repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone https://github.com/abhigyan-oss/github-profile-analyzer-assignment.git
 ```
 
-Go to the project folder:
+## Move into Project
 
 ```bash
 cd github-profile-analyzer-assignment
 ```
 
-Install dependencies:
+## Install Dependencies
 
 ```bash
 npm install
 ```
 
-Create a `.env` file:
+---
+
+# Environment Variables
+
+Create a `.env` file.
 
 ```env
 PORT=5000
 
 DB_HOST=localhost
+DB_PORT=3306
 DB_USER=github_user
 DB_PASSWORD=your_password
 DB_NAME=github_analyzer
@@ -86,17 +107,27 @@ DB_NAME=github_analyzer
 GITHUB_API_URL=https://api.github.com/users
 ```
 
-Run the project:
+---
+
+# Run Project
+
+Development
 
 ```bash
 npm run dev
 ```
 
+Production
+
+```bash
+npm start
+```
+
 ---
 
-## 🗄 Database
+# Database
 
-Import the provided database:
+Import the SQL file:
 
 ```bash
 mysql -u root -p < github_analyzer.sql
@@ -104,9 +135,9 @@ mysql -u root -p < github_analyzer.sql
 
 ---
 
-## 📡 API Endpoints
+# API Endpoints
 
-### Analyze a GitHub Profile
+## Analyze GitHub Profile
 
 **POST**
 
@@ -114,7 +145,7 @@ mysql -u root -p < github_analyzer.sql
 /api/github/analyze/:username
 ```
 
-Example:
+Example
 
 ```
 POST /api/github/analyze/octocat
@@ -122,7 +153,7 @@ POST /api/github/analyze/octocat
 
 ---
 
-### Get All Profiles
+## Get All Profiles
 
 **GET**
 
@@ -132,7 +163,7 @@ POST /api/github/analyze/octocat
 
 ---
 
-### Get Single Profile
+## Get Profile by Username
 
 **GET**
 
@@ -140,7 +171,7 @@ POST /api/github/analyze/octocat
 /api/github/:username
 ```
 
-Example:
+Example
 
 ```
 GET /api/github/octocat
@@ -148,25 +179,64 @@ GET /api/github/octocat
 
 ---
 
-## 📊 Stored Insights
+# Stored Insights
 
 * Username
 * Name
 * Bio
+* Avatar URL
 * Company
 * Location
-* Public Repositories
-* Public Gists
+* Blog
+* Twitter Username
+* GitHub Profile URL
 * Followers
 * Following
+* Public Repositories
+* Public Gists
 * GitHub Account Age
+* Follower-to-Repository Ratio
 * Developer Level
 * Popularity Score
 * Profile Completeness
-* Follower/Repository Ratio
+* Created At
+* Updated At
 
 ---
 
-## Author
+# Example Response
 
-Abhigyan Jha
+```json
+{
+  "success": true,
+  "message": "Profile analyzed and saved successfully",
+  "data": {
+    "username": "octocat",
+    "name": "The Octocat",
+    "followers": 23087,
+    "public_repos": 8,
+    "developer_level": "Beginner",
+    "popularity_score": 46182
+  }
+}
+```
+
+---
+
+# Deployment
+
+**Backend**
+
+Vercel
+
+**Database**
+
+Railway MySQL
+
+---
+
+# Author
+
+**Abhigyan Jha**
+
+GitHub: https://github.com/abhigyan-oss
