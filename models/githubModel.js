@@ -1,6 +1,5 @@
 const db = require("../config/db");
 
-// Save or Update Profile
 const saveProfile = async (profile) => {
   const query = `
     INSERT INTO github_profiles (
